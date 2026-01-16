@@ -22,6 +22,11 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit() {
+      const userProfile= localStorage.getItem('user');
+      if(userProfile){
+        this.store.dispatch(authActions.login({user: JSON.parse(userProfile)}));
+      }
+
      // this.store.subscribe(state=>console.log('App State', state));
      // this.isLoggedIn$= this.store.pipe(map((state:any) => !!state.auth.user));
      this.isLoggedIn$= this.store.pipe(select(IsLoggedIn));

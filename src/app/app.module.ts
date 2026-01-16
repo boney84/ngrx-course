@@ -52,7 +52,11 @@ const routes: Routes = [
         MatListModule,
         MatToolbarModule,
         AuthModule.forRoot(),
-        StoreModule.forRoot({}, {}),
+        StoreModule.forRoot({}, {runtimeChecks:{
+          strictStateImmutability: true,
+          strictActionImmutability: true,
+          strictStateSerializability: true,
+        }}),
         StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
         EffectsModule.forRoot([]),
       ], 
